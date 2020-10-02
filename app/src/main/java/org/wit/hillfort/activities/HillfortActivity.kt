@@ -50,6 +50,8 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
       hillfort = intent.extras?.getParcelable<HillfortModel>("hillfort_edit")!!
       hillfortTitle.setText(hillfort.title)
       description.setText(hillfort.description)
+      loclat.setText(hillfort.loclat)
+      loclng.setText(hillfort.loclng)
       hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
       if (hillfort.image != null) {
         chooseImage.setText(R.string.change_hillfort_image)
@@ -60,6 +62,8 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     btnAdd.setOnClickListener() {
       hillfort.title = hillfortTitle.text.toString()
       hillfort.description = description.text.toString()
+      hillfort.loclat = loclat.text.toString()
+      hillfort.loclng = loclng.text.toString()
       if (hillfort.title.isEmpty()) {
         toast(R.string.enter_hillfort_title)
       } else {

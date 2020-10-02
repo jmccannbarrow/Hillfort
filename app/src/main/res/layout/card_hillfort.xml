@@ -35,5 +35,7 @@
             android:layout_below="@id/hillfortTitle"
             android:layout_toEndOf="@+id/imageIcon"/>
 
+
+
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
