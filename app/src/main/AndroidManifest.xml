@@ -30,11 +30,7 @@
 
         <activity android:name=".activities.HillfortActivity" />
         <activity android:name=".activities.HillfortListActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activities.MapActivity"
