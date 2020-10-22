@@ -21,8 +21,8 @@
             android:padding="30dp"
             android:text="Login"/>
         <EditText
-            android:id="@+id/et_user_name"
-            android:hint="User Name"
+            android:id="@+id/et_email_address"
+            android:hint="Email Address"
             android:textColor="#6bfff7"
             android:textColorHint="#52afaa"
             android:textAlignment="center"

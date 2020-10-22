@@ -20,12 +20,12 @@ class SplashActivity : AppCompatActivity() {
             // Start your app main activity
 
 
-            //startActivity(Intent(this,LoginActivity::class.java))
+            startActivity(Intent(this,LoginActivity::class.java))
 
 
-            startActivity(Intent(this,HillfortActivity::class.java))
+            //startActivity(Intent(this,HillfortActivity::class.java))
 
-            startActivity(Intent(this,HillfortListActivity::class.java))
+            //startActivity(Intent(this,HillfortListActivity::class.java))
 
             // close this activity
             finish()
