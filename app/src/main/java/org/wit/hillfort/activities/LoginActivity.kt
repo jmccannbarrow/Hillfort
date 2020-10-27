@@ -7,16 +7,13 @@ import android.view.View
 import android.widget.*
 import org.wit.hillfort.R
 
-import org.jetbrains.anko.intentFor
+//import android.view.MenuItem
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_hillfort.*
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
-import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.toast
 
 import org.wit.hillfort.helpers.readImage
 import org.wit.hillfort.helpers.readImageFromPath
@@ -25,6 +22,7 @@ import org.wit.hillfort.main.MainApp
 
 import android.content.Intent
 import android.os.Handler
+import org.jetbrains.anko.*
 import org.wit.hillfort.models.Location
 
 import java.util.regex.Matcher
@@ -44,6 +42,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        setSupportActionBar(toolbarAdd)
 
 
         // get reference to all views
@@ -82,5 +81,22 @@ class LoginActivity : AppCompatActivity() {
 
 
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_login, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item?.itemId) {
+
+            R.id.item_register -> {startActivityForResult<RegisterActivity>(0)
+            }
+
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
 
 }

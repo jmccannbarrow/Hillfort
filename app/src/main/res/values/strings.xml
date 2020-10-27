@@ -20,6 +20,13 @@
     <string name="title_activity_map">Map</string>
     <string name="menu_deleteHillfort">Delete</string>
     <string name="menu_logout">Logout</string>
+    <string name="menu_login">Login</string>
+    <string name="menu_register">Register</string>
+    <string name="hint_userEmail">Email</string>
+    <string name="hint_userPassword">Password </string>
+    <string name="button_addUser">Register</string>
+    
+
 
 
 </resources>
