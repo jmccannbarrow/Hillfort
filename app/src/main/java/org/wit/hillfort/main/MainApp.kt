@@ -7,9 +7,10 @@ import org.wit.hillfort.models.HillfortJSONStore
 import org.wit.hillfort.models.HillfortStore
 
 
+
 class MainApp : Application(), AnkoLogger {
 
-    lateinit var hillforts: HillfortStore
+    lateinit var hillforts: HillfortStore;
 
 
 

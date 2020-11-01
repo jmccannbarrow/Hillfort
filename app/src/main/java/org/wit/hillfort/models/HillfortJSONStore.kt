@@ -16,10 +16,12 @@ fun generateRandomId(): Long {
     return Random().nextLong()
 }
 
-class HillfortJSONStore : HillfortStore, AnkoLogger {
+class HillfortJSONStore : HillfortStore,  AnkoLogger {
 
     val context: Context
     var hillforts = mutableListOf<HillfortModel>()
+
+
 
     constructor (context: Context) {
         this.context = context

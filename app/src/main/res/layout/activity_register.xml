@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.wit.hillfort.activities.HillfortActivity">
+    tools:context="org.wit.hillfort.activities.RegisterActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -50,7 +50,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/userEmail"
+                    android:id="@+id/uemail"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_margin="8dp"
@@ -64,7 +64,7 @@
                     android:textSize="14sp" />
 
                 <EditText
-                    android:id="@+id/userPassword"
+                    android:id="@+id/upassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
@@ -86,7 +86,7 @@
 
 
                 <Button
-                    android:id="@+id/button_addUser"
+                    android:id="@+id/item_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"

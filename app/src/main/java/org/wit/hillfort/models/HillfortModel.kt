@@ -1,3 +1,4 @@
+
 package org.wit.hillfort.models
 
 import android.os.Parcelable

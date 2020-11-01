@@ -25,7 +25,11 @@
     <string name="hint_userEmail">Email</string>
     <string name="hint_userPassword">Password </string>
     <string name="button_addUser">Register</string>
-    
+
+
+    <string name="enter_user_email"> Please enter a Email </string>
+    <string name="enter_user_password"> Please enter a Password </string>
+    <string name="save_user"> Save User </string>
 
 
 
