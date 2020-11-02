@@ -49,8 +49,16 @@ class RegisterActivity : AppCompatActivity(),AnkoLogger {
 
 
 
+        item_register.setOnClickListener() {
+
+
+            toast("TODO:User Authentication")
+        }
+
 
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_hillfort, menu)

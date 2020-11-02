@@ -42,6 +42,8 @@
         android:gravity="center"
         android:orientation="vertical">
 
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -84,7 +86,16 @@
                 android:textAllCaps="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+
         </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textColor="#52afab"
+            android:padding="30dp"
+            android:text="Enter homer@simpson.com and 'secret' to continue"/>
     </LinearLayout>
     </ScrollView>
 

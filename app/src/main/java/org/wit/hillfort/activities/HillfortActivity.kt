@@ -98,7 +98,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
     hillfortLocation.setOnClickListener {
 
-      val location = Location(52.245696, -7.139102, 15f)
+      val location = Location(52.245696, -7.139102, 10f)
       if (hillfort.zoom != 0f) {
         location.lat =  hillfort.lat
         location.lng = hillfort.lng
