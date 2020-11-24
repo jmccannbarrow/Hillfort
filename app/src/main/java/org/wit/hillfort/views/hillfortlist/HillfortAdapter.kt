@@ -1,4 +1,4 @@
-package org.wit.hillfort.activities
+package org.wit.hillfort.views.hillfortlist
 
 import android.view.LayoutInflater
 import android.view.View
@@ -16,9 +16,8 @@ interface HillfortListener {
     fun onHillfortClick(hillfort: HillfortModel)
 }
 
-class HillfortAdapter constructor(
-    private var hillforts: List<HillfortModel>,
-    private val listener: HillfortListener
+class HillfortAdapter constructor(private var hillforts: List<HillfortModel>,
+                                   private val listener: HillfortListener
 ) : RecyclerView.Adapter<HillfortAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -43,8 +42,6 @@ class HillfortAdapter constructor(
         fun bind(hillfort: HillfortModel, listener: HillfortListener) {
             itemView.hillfortTitle.text = hillfort.title
             itemView.description.text = hillfort.description
-
-            
             itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, hillfort.image))
             itemView.setOnClickListener { listener.onHillfortClick(hillfort) }
         }

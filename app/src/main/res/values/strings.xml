@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Hillfort</string>
     <string name="hint_hillfortTitle">Hillfort Title</string>
-    <string name="hint_hillfortDescription">Description </string>
-    <string name="hint_hillfortLatitude">Latitude </string>
-    <string name="hint_hillfortLongtitude">Longtitude </string>
+    <string name="hint_hillfortDescription">Hillfort Description</string>
+    <string name="hint_hillfortRating">Rating (out of 5) </string>
+
     <string name="button_addHillfort">Add a Hillfort</string>
     <string name="menu_addHillfort">Add</string>
     <string name="menu_cancelHillfort">Cancel</string>
@@ -11,11 +11,11 @@
     <string name="enter_hillfort_title"> Please enter a Hillfort Title </string>
     <string name="save_hillfort"> Save Hillfort </string>
     <string name="button_addImage"> Add Main Image </string>
-    <string name="button_addImage2"> Add Secondary Image </string>
+
     <string name="change_hillfort_image">Change hillfort main image</string>
-    <string name="change_hillfort_image2">Change hillfort secondary image</string>
+
     <string name="select_hillfort_image">Select hillfort image</string>
-    <string name="select_hillfort_image2">Select hillfort secondary image</string>
+
     <string name="button_location">Set Location</string>
     <string name="title_activity_map">Map</string>
     <string name="menu_deleteHillfort">Delete</string>
@@ -25,14 +25,19 @@
     <string name="hint_userEmail">Email</string>
     <string name="hint_userPassword">Password </string>
     <string name="button_addUser">Register</string>
-    <string name="enter_hillfort_email"> Please enter a Hillfort Email </string>
-
-
-
+    <string name="hillfort_image_placeholder">Hillfort Image</string>
+    <string name="hillfort_title_placeholder">Hillfort Title</string>
+    <string name="hillfort_description_placeholder">Hillfort Description</string>
+    <string name="hillfort_rating_placeholder">Hillfort Rating</string>
+    <string name="hillfortPicture">Hillfort Picture</string>
+    <string name="hillfortTitle">Hillfort Title</string>
+    <string name="hillfortDescription">Hillfort Description</string>
+    <string name="hillfortRating">Hillfort Rating</string>
+    <string name="title_activity_hillfort_maps">Map of All Hillforts </string>
     <string name="enter_user_email"> Please enter a Email </string>
     <string name="enter_user_password"> Please enter a Password </string>
     <string name="save_user"> Save User </string>
-
+    <string name="menu_saveHillfort">Save</string>
 
 
 </resources>

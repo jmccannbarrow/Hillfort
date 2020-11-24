@@ -3,7 +3,6 @@ package org.wit.hillfort.activities
 
 
 import android.content.Context
-import android.view.View
 import android.widget.*
 import org.wit.hillfort.R
 
@@ -15,18 +14,12 @@ import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_hillfort.*
 
-import org.wit.hillfort.helpers.readImage
-import org.wit.hillfort.helpers.readImageFromPath
-import org.wit.hillfort.helpers.showImagePicker
 import org.wit.hillfort.main.MainApp
 
 import android.content.Intent
-import android.os.Handler
 import org.jetbrains.anko.*
-import org.wit.hillfort.models.Location
-
-import java.util.regex.Matcher
-import java.util.regex.Pattern
+import org.wit.hillfort.views.hillfort.HillfortView
+import org.wit.hillfort.views.hillfortlist.HillfortListView
 
 
 /**
@@ -69,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
                 val editor = getSharedPreferences("name", Context.MODE_PRIVATE).edit()
                 editor.putString("name", name)
                 editor.apply()
-                val intent = Intent(this, HillfortListActivity::class.java)
+                val intent = Intent(this, HillfortListView::class.java)
                 intent.putExtra("name", name)
                 startActivity(intent)
 

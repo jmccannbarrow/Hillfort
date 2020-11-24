@@ -16,12 +16,10 @@ fun generateRandomId(): Long {
     return Random().nextLong()
 }
 
-class HillfortJSONStore : HillfortStore,  AnkoLogger {
+class HillfortJSONStore : HillfortStore, AnkoLogger {
 
     val context: Context
     var hillforts = mutableListOf<HillfortModel>()
-
-
 
     constructor (context: Context) {
         this.context = context
@@ -40,9 +38,29 @@ class HillfortJSONStore : HillfortStore,  AnkoLogger {
         serialize()
     }
 
+    override fun update(hillfort: HillfortModel) {
+        val hillfortsList = findAll() as ArrayList<HillfortModel>
+        var foundHillfort: HillfortModel? = hillfortsList.find { p -> p.id == hillfort.id }
+        if (foundHillfort != null) {
+            foundHillfort.title = hillfort.title
+            foundHillfort.description = hillfort.description
+            foundHillfort.rating = hillfort.rating
+            foundHillfort.image = hillfort.image
+            foundHillfort.lat = hillfort.lat
+            foundHillfort.lng = hillfort.lng
+            foundHillfort.zoom = hillfort.zoom
+        }
+        serialize()
+    }
+
     override fun delete(hillfort: HillfortModel) {
         hillforts.remove(hillfort)
         serialize()
+    }
+
+    override fun findById(id:Long) : HillfortModel? {
+        val foundHillfort: HillfortModel? = hillforts.find { it.id == id }
+        return foundHillfort
     }
 
     private fun serialize() {
@@ -53,22 +71,5 @@ class HillfortJSONStore : HillfortStore,  AnkoLogger {
     private fun deserialize() {
         val jsonString = read(context, JSON_FILE)
         hillforts = Gson().fromJson(jsonString, listType)
-    }
-
-    override fun update(hillfort: HillfortModel) {
-        val hillfortsList = findAll() as ArrayList<HillfortModel>
-        var foundHillfort: HillfortModel? = hillfortsList.find { p -> p.id == hillfort.id }
-        if (foundHillfort != null) {
-            foundHillfort.title = hillfort.title
-            foundHillfort.description = hillfort.description
-            foundHillfort.loclat = hillfort.loclat
-            foundHillfort.loclng = hillfort.loclng
-            foundHillfort.image = hillfort.image
-            foundHillfort.image2 = hillfort.image2
-            foundHillfort.lat = hillfort.lat
-            foundHillfort.lng = hillfort.lng
-            foundHillfort.zoom = hillfort.zoom
-        }
-        serialize()
     }
 }
