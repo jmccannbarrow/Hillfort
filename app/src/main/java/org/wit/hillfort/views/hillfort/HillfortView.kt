@@ -8,10 +8,9 @@ import kotlinx.android.synthetic.main.activity_hillfort.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.toast
 import org.wit.hillfort.R
-import org.wit.hillfort.views.BaseView
-
 import org.wit.hillfort.helpers.readImageFromPath
 import org.wit.hillfort.models.HillfortModel
+import org.wit.hillfort.views.BaseView
 
 
 class HillfortView : BaseView(), AnkoLogger {
@@ -22,19 +21,20 @@ class HillfortView : BaseView(), AnkoLogger {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hillfort)
+        super.init(toolbarAdd)
 
-        init(toolbarAdd)
 
         presenter = initPresenter (HillfortPresenter(this)) as HillfortPresenter
 
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync {
             presenter.doConfigureMap(it)
+            it.setOnMapClickListener { presenter.doSetLocation() }
         }
 
         chooseImage.setOnClickListener { presenter.doSelectImage() }
 
-        hillfortLocation.setOnClickListener { presenter.doSetLocation() }
+
     }
 
     override fun showHillfort(hillfort: HillfortModel) {
@@ -43,8 +43,10 @@ class HillfortView : BaseView(), AnkoLogger {
         rating.setText(hillfort.rating)
         hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
         if (hillfort.image != null) {
-            chooseImage.setText(R.string.button_addImage)
+            chooseImage.setText(R.string.change_hillfort_image)
         }
+        lat.setText("%.6f".format(hillfort.lat))
+        lng.setText("%.6f".format(hillfort.lng))
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -105,6 +107,7 @@ class HillfortView : BaseView(), AnkoLogger {
     override fun onResume() {
         super.onResume()
         mapView.onResume()
+        presenter.doResartLocationUpdates()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
