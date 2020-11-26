@@ -39,5 +39,9 @@
     <string name="save_user"> Save User </string>
     <string name="menu_saveHillfort">Save</string>
 
+    <string name="title_activity_hillfort_list">Hillforts</string>
+    <string name="title_activity_hillfort">Hillfort</string>
+    <string name="title_activity_edit_location">Hillfort</string>
+
 
 </resources>
