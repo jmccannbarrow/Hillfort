@@ -15,11 +15,7 @@
         android:id="@+id/item_cancel"
         android:title="@string/menu_cancelHillfort"
         app:showAsAction="always"/>
-    <item
-        android:id="@+id/item_back"
-        android:icon="@android:drawable/ic_menu_upload"
-        android:title="@string/menu_backHillfort"
-        app:showAsAction="always"/>
+
 
 
 
