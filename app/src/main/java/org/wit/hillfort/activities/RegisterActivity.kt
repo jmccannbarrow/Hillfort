@@ -73,9 +73,7 @@ class RegisterActivity : AppCompatActivity(),AnkoLogger {
                 finish()
             }
 
-            R.id.item_back -> {
-                finish()
-            }
+
 
 
         }

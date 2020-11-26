@@ -20,10 +20,10 @@ import org.wit.hillfort.views.*
 
 class HillfortPresenter(view: BaseView) : BasePresenter(view) {
 
-    var map: GoogleMap? = null
     var hillfort = HillfortModel()
     var defaultLocation = Location(52.245696, -7.139102, 15f)
     var edit = false;
+    var map: GoogleMap? = null
     var locationService: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(view)
     val locationRequest = createDefaultLocationRequest()
 
@@ -39,11 +39,18 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
         }
     }
 
-
     @SuppressLint("MissingPermission")
     fun doSetCurrentLocation() {
         locationService.lastLocation.addOnSuccessListener {
             locationUpdate(it.latitude, it.longitude)
+        }
+    }
+
+    override fun doRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        if (isPermissionGranted(requestCode, grantResults)) {
+            doSetCurrentLocation()
+        } else {
+            locationUpdate(defaultLocation.lat, defaultLocation.lng)
         }
     }
 
@@ -62,12 +69,22 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
         }
     }
 
-    override fun doRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        if (isPermissionGranted(requestCode, grantResults)) {
-            doSetCurrentLocation()
+    fun doAddOrSave(title: String, description: String, rating: String) {
+        hillfort.title = title
+        hillfort.description = description
+        hillfort.rating = rating
+        if (edit) {
+            app.hillforts.update(hillfort)
         } else {
-            locationUpdate(defaultLocation.lat, defaultLocation.lng)
+            app.hillforts.create(hillfort)
         }
+        view?.finish()
+    }
+
+    fun cacheHillfort (title: String, description: String, rating: String) {
+        hillfort.title = title;
+        hillfort.description = description;
+        hillfort.rating = rating
     }
 
     fun doConfigureMap(m: GoogleMap) {
@@ -87,20 +104,6 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
         view?.showHillfort(hillfort)
     }
 
-
-
-    fun doAddOrSave(title: String, description: String, rating: String) {
-        hillfort.title = title
-        hillfort.description = description
-        hillfort.rating = rating
-        if (edit) {
-            app.hillforts.update(hillfort)
-        } else {
-            app.hillforts.create(hillfort)
-        }
-        view?.finish()
-    }
-
     fun doCancel() {
         view?.finish()
     }
@@ -117,16 +120,7 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun doSetLocation() {
-        if (edit == false) {
-            view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", defaultLocation)
-        } else {
-            view?.navigateTo(
-                VIEW.LOCATION,
-                LOCATION_REQUEST,
-                "location",
-                Location(hillfort.lat, hillfort.lng, hillfort.zoom)
-            )
-        }
+        view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", Location(hillfort.lat, hillfort.lng, hillfort.zoom))
     }
 
     override fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
