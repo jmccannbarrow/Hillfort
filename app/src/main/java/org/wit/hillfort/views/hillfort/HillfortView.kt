@@ -41,9 +41,9 @@ class HillfortView : BaseView(), AnkoLogger {
     }
 
     override fun showHillfort(hillfort: HillfortModel) {
-        hillfortTitle.setText(hillfort.title)
-        description.setText(hillfort.description)
-        rating.setText(hillfort.rating)
+        if (hillfortTitle.text.isEmpty()) hillfortTitle.setText(hillfort.title)
+        if (description.text.isEmpty())  description.setText(hillfort.description)
+        if (rating.text.isEmpty())  rating.setText(hillfort.rating)
         hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
         if (hillfort.image != null) {
             chooseImage.setText(R.string.change_hillfort_image)
