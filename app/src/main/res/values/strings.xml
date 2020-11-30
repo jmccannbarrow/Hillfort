@@ -19,12 +19,10 @@
     <string name="button_location">Set Location</string>
     <string name="title_activity_map">Map</string>
     <string name="menu_deleteHillfort">Delete</string>
-    <string name="menu_logout">Logout</string>
-    <string name="menu_login">Login</string>
-    <string name="menu_register">Register</string>
-    <string name="hint_userEmail">Email</string>
-    <string name="hint_userPassword">Password </string>
-    <string name="button_addUser">Register</string>
+
+
+
+
     <string name="hillfort_image_placeholder">Hillfort Image</string>
     <string name="hillfort_title_placeholder">Hillfort Title</string>
     <string name="hillfort_description_placeholder">Hillfort Description</string>
@@ -42,6 +40,11 @@
     <string name="title_activity_hillfort_list">Hillforts</string>
     <string name="title_activity_hillfort">Hillfort</string>
     <string name="title_activity_edit_location">Hillfort</string>
+
+    <string name="title_activity_login"> Signup/Login to Hillfort</string>
+
+    <string name="menu_showMap">Show Map</string>
+    <string name="menu_logout">Logout</string>
 
 
 </resources>

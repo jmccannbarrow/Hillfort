@@ -6,7 +6,6 @@ import android.view.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_hillfortlist.*
 import org.wit.hillfort.R
-import org.wit.hillfort.activities.LoginActivity
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
 import org.wit.hillfort.views.BaseView
@@ -43,8 +42,8 @@ class HillfortListView :  BaseView(), HillfortListener {
         when (item?.itemId) {
             R.id.item_add -> presenter.doAddHillfort()
             R.id.item_map -> presenter.doShowHillfortsMap()
-            R.id.item_logout -> {startActivityForResult<LoginActivity>(0)
-            }
+            R.id.item_logout ->presenter.doLogout()
+
         }
 
         return super.onOptionsItemSelected(item)
