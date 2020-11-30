@@ -10,17 +10,18 @@ import org.wit.hillfort.views.BasePresenter
 import org.wit.hillfort.views.editlocation.EditLocationView
 
 import org.wit.hillfort.models.HillfortModel
-
+import org.wit.hillfort.views.login.LoginView
 import org.wit.hillfort.views.map.HillfortMapView
 import org.wit.hillfort.views.hillfort.HillfortView
 import org.wit.hillfort.views.hillfortlist.HillfortListView
+import com.google.firebase.auth.FirebaseAuth
 
 
 val IMAGE_REQUEST = 1
 val LOCATION_REQUEST = 2
 
 enum class VIEW {
-    LOCATION, HILLFORT, MAPS, LIST
+    LOCATION, HILLFORT, MAPS, LIST, LOGIN
 }
 
 open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
@@ -34,6 +35,7 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
             VIEW.HILLFORT -> intent = Intent(this, HillfortView::class.java)
             VIEW.MAPS -> intent = Intent(this, HillfortMapView::class.java)
             VIEW.LIST -> intent = Intent(this, HillfortListView::class.java)
+            VIEW.LOGIN -> intent = Intent(this, LoginView::class.java)
         }
         if (key != "") {
             intent.putExtra(key, value)
@@ -49,6 +51,11 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
     fun init(toolbar: Toolbar, upEnabled: Boolean) {
         toolbar.title = title
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(upEnabled)
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            toolbar.title = "${title}: ${user.email}"
+        }
         supportActionBar?.setDisplayHomeAsUpEnabled(upEnabled)
     }
 

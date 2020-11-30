@@ -7,6 +7,7 @@ import android.os.Handler
 import org.wit.hillfort.R
 import org.wit.hillfort.views.hillfort.HillfortView
 import org.wit.hillfort.views.hillfortlist.HillfortListView
+import org.wit.hillfort.views.login.LoginView
 
 
 class SplashActivity : AppCompatActivity() {
@@ -23,12 +24,13 @@ class SplashActivity : AppCompatActivity() {
             // Start your app main activity
 
 
-            startActivity(Intent(this,LoginActivity::class.java))
+            //startActivity(Intent(this,LoginActivity::class.java))
 
 
-            //startActivity(Intent(this, HillfortListView::class.java))
+            startActivity(Intent(this, LoginView::class.java))
 
             //startActivity(Intent(this, HillfortView::class.java))
+            //startActivity(Intent(this, HillfortListView::class.java))
 
             // close this activity
             finish()
