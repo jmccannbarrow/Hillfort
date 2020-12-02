@@ -2,6 +2,8 @@ package org.wit.hillfort.views.hillfort
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationResult
@@ -69,16 +71,20 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
         }
     }
 
-    fun doAddOrSave(title: String, description: String, rating: String) {
+    fun doAddOrSave(title: String, description: String,rating: String) {
         hillfort.title = title
         hillfort.description = description
         hillfort.rating = rating
-        if (edit) {
-            app.hillforts.update(hillfort)
-        } else {
-            app.hillforts.create(hillfort)
+        doAsync {
+            if (edit) {
+                app.hillforts.update(hillfort)
+            } else {
+                app.hillforts.create(hillfort)
+            }
+            uiThread {
+                view?.finish()
+            }
         }
-        view?.finish()
     }
 
     fun cacheHillfort (title: String, description: String, rating: String) {
@@ -109,8 +115,14 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun doDelete() {
-        app.hillforts.delete(hillfort)
-        view?.finish()
+
+        doAsync {
+            val hillforts = app.hillforts.delete(hillfort)
+            uiThread {
+                view?.finish()
+            }
+        }
+
     }
 
     fun doSelectImage() {
