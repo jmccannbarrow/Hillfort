@@ -5,10 +5,11 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
+import org.wit.hillfort.models.Location
 import com.google.android.gms.maps.model.MarkerOptions
 import org.wit.hillfort.views.BasePresenter
 import org.wit.hillfort.views.BaseView
-import org.wit.hillfort.models.Location
+
 
 
 class EditLocationPresenter(view: BaseView) : BasePresenter(view) {
@@ -28,7 +29,7 @@ class EditLocationPresenter(view: BaseView) : BasePresenter(view) {
             .position(loc)
         map.addMarker(options)
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, location.zoom))
-        view?.showLocation(loc.latitude, loc.longitude);
+        view?.showLocation(location);
     }
 
     fun doUpdateLocation(lat: Double, lng: Double) {
