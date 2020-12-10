@@ -2,14 +2,19 @@ package org.wit.hillfort.views.hillfort
 
 import android.content.Intent
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import android.view.Menu
 import android.view.MenuItem
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import com.google.android.gms.maps.GoogleMap
 import kotlinx.android.synthetic.main.activity_hillfort.*
 import org.jetbrains.anko.AnkoLogger
+import com.google.android.gms.maps.model.Marker
 import org.jetbrains.anko.toast
 import org.wit.hillfort.R
 import org.wit.hillfort.helpers.readImageFromPath
+import org.wit.hillfort.models.Location
 import org.wit.hillfort.models.HillfortModel
 import org.wit.hillfort.views.BaseView
 
@@ -44,12 +49,17 @@ class HillfortView : BaseView(), AnkoLogger {
         if (hillfortTitle.text.isEmpty()) hillfortTitle.setText(hillfort.title)
         if (description.text.isEmpty())  description.setText(hillfort.description)
         if (rating.text.isEmpty())  rating.setText(hillfort.rating)
-        hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
+        Glide.with(this).load(hillfort.image).into(hillfortImage);
+
         if (hillfort.image != null) {
             chooseImage.setText(R.string.change_hillfort_image)
         }
-        lat.setText("%.6f".format(hillfort.lat))
-        lng.setText("%.6f".format(hillfort.lng))
+        this.showLocation(hillfort.location)
+    }
+
+    override fun showLocation (loc : Location) {
+        lat.setText("%.6f".format(loc.lat))
+        lng.setText("%.6f".format(loc.lng))
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -87,6 +97,7 @@ class HillfortView : BaseView(), AnkoLogger {
     override fun onBackPressed() {
         presenter.doCancel()
     }
+
 
     override fun onDestroy() {
         super.onDestroy()

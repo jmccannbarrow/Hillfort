@@ -6,7 +6,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.toast
 import org.wit.hillfort.R
 import org.wit.hillfort.views.BaseView
-import org.wit.placemark.views.login.LoginPresenter
+import org.wit.hillfort.views.login.LoginPresenter
 
 class LoginView : BaseView() {
 

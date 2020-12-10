@@ -1,15 +1,19 @@
 package org.wit.hillfort.views.map
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.Marker
-import org.wit.hillfort.R
 import kotlinx.android.synthetic.main.activity_hillfort_maps.*
 import kotlinx.android.synthetic.main.content_hillfort_maps.*
-import org.wit.hillfort.views.BaseView
+import org.wit.hillfort.R
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import org.wit.hillfort.helpers.readImageFromPath
 import org.wit.hillfort.models.HillfortModel
-
+import org.wit.hillfort.views.BaseView
 
 class HillfortMapView : BaseView(), GoogleMap.OnMarkerClickListener {
 
@@ -34,7 +38,7 @@ class HillfortMapView : BaseView(), GoogleMap.OnMarkerClickListener {
     override fun showHillfort(hillfort: HillfortModel) {
         currentTitle.text = hillfort.title
         currentDescription.text = hillfort.description
-        currentImage.setImageBitmap(readImageFromPath(this, hillfort.image))
+        Glide.with(this).load(hillfort.image).into(currentImage);
     }
 
     override fun showHillforts(hillforts: List<HillfortModel>) {
@@ -71,3 +75,4 @@ class HillfortMapView : BaseView(), GoogleMap.OnMarkerClickListener {
         mapView.onSaveInstanceState(outState)
     }
 }
+

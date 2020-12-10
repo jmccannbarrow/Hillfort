@@ -3,12 +3,16 @@ package org.wit.hillfort.views.editlocation
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
+import org.wit.hillfort.models.Location
 import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.activity_edit_location.*
 import org.wit.hillfort.R
 import org.wit.hillfort.views.BaseView
+
 
 class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
 
@@ -29,10 +33,19 @@ class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.O
         }
     }
 
+    override fun showLocation(location: Location) {
+        lat.setText("%.6f".format(location.lat))
+        lng.setText("%.6f".format(location.lng))
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_edit_location, menu)
         return super.onCreateOptionsMenu(menu)
     }
+
+
+
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
@@ -84,8 +97,6 @@ class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.O
         mapView.onSaveInstanceState(outState)
     }
 
-    override fun showLocation(latitude : Double, longitude : Double) {
-        lat.setText("%.6f".format(latitude))
-        lng.setText("%.6f".format(longitude))
-    }
+
+
 }

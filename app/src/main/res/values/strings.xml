@@ -46,5 +46,7 @@
     <string name="menu_showMap">Show Map</string>
     <string name="menu_logout">Logout</string>
 
+    <string name="search_title">Search</string>
+
 
 </resources>

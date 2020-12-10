@@ -34,16 +34,12 @@ class HillfortMemStore : HillfortStore, AnkoLogger {
             foundHillfort.rating = hillfort.rating
             foundHillfort.image = hillfort.image
 
-            foundHillfort.lat = hillfort.lat
-            foundHillfort.lng = hillfort.lng
-            foundHillfort.zoom = hillfort.zoom
+            foundHillfort.location = hillfort.location
             logAll()
         }
     }
 
-    fun logAll() {
-        hillforts.forEach { info("${it}") }
-    }
+
 
     override fun delete(hillfort: HillfortModel) {
         hillforts.remove(hillfort)
@@ -53,4 +49,13 @@ class HillfortMemStore : HillfortStore, AnkoLogger {
         val foundHillfort: HillfortModel? = hillforts.find { it.id == id }
         return foundHillfort
     }
+
+    fun logAll() {
+        hillforts.forEach { info("${it}") }
+    }
+
+    override fun clear() {
+        hillforts.clear()
+    }
+
 }
