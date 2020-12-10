@@ -5,17 +5,16 @@ import android.content.Intent
 import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.google.firebase.auth.FirebaseAuth
 import org.jetbrains.anko.AnkoLogger
-import org.wit.hillfort.views.BasePresenter
-import org.wit.hillfort.views.editlocation.EditLocationView
+import org.wit.hillfort.models.Location
 
 import org.wit.hillfort.models.HillfortModel
-import org.wit.hillfort.views.login.LoginView
+import org.wit.hillfort.views.editlocation.EditLocationView
 import org.wit.hillfort.views.map.HillfortMapView
 import org.wit.hillfort.views.hillfort.HillfortView
 import org.wit.hillfort.views.hillfortlist.HillfortListView
-import com.google.firebase.auth.FirebaseAuth
-
+import org.wit.hillfort.views.login.LoginView
 
 val IMAGE_REQUEST = 1
 val LOCATION_REQUEST = 2
@@ -43,11 +42,6 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
         startActivityForResult(intent, code)
     }
 
-    fun initPresenter(presenter: BasePresenter): BasePresenter {
-        basePresenter = presenter
-        return presenter
-    }
-
     fun init(toolbar: Toolbar, upEnabled: Boolean) {
         toolbar.title = title
         setSupportActionBar(toolbar)
@@ -56,7 +50,16 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
         if (user != null) {
             toolbar.title = "${title}: ${user.email}"
         }
-        supportActionBar?.setDisplayHomeAsUpEnabled(upEnabled)
+    }
+
+    fun initPresenter(presenter: BasePresenter): BasePresenter {
+        basePresenter = presenter
+        return presenter
+    }
+
+    fun init(toolbar: Toolbar) {
+        toolbar.title = title
+        setSupportActionBar(toolbar)
     }
 
     override fun onDestroy() {
@@ -76,10 +79,9 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
         basePresenter?.doRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
-    open fun showLocation(latitude : Double, longitude : Double) {}
-
     open fun showHillfort(hillfort: HillfortModel) {}
     open fun showHillforts(hillforts: List<HillfortModel>) {}
+    open fun showLocation(location : Location) {}
     open fun showProgress() {}
     open fun hideProgress() {}
 }
