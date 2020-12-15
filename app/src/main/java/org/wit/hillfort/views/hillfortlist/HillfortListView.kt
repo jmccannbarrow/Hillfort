@@ -54,8 +54,6 @@ class HillfortListView :  BaseView(), HillfortListener {
         presenter.doEditHillfort(hillfort)
     }
 
-
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         presenter.loadHillforts()
         super.onActivityResult(requestCode, resultCode, data)

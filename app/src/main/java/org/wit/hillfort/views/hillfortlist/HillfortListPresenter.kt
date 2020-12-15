@@ -38,6 +38,4 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
         view?.navigateTo(VIEW.LOGIN)
     }
 
-
-
 }

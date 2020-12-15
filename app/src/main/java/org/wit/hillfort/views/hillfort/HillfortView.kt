@@ -43,27 +43,7 @@ class HillfortView : BaseView(), AnkoLogger {
             presenter.cacheHillfort(hillfortTitle.text.toString(), description.text.toString(), rating.text.toString())
             presenter.doSelectImage()
         }
-
-        btnShare.setOnClickListener {
-            //Get text from TextView and store in variable "s"
-
-
-            val s = hillfortTitle.text.toString()
-            //Intent to share the text
-
-            val shareIntent = Intent()
-
-            shareIntent.action = Intent.ACTION_SEND
-            shareIntent.type="text/plain"
-
-
-            shareIntent.putExtra(Intent.EXTRA_TEXT, s);
-            startActivity(Intent.createChooser(shareIntent,"Share via"))
-        }
-
     }
-
-
 
     override fun showHillfort(hillfort: HillfortModel) {
         if (hillfortTitle.text.isEmpty()) hillfortTitle.setText(hillfort.title)
