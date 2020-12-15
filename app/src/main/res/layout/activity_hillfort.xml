@@ -36,8 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/appBarLayout"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="0dp">
+            android:layout_marginTop="-1dp"
+            android:layout_marginBottom="1dp">
 
 
             <Button
@@ -127,6 +127,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/hillfortTitle" />
 
+
             <TextView
                 android:id="@+id/lng"
                 android:layout_width="92dp"
@@ -138,12 +139,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lat" />
 
+
             <ImageView
                 android:id="@+id/hillfortImage"
                 android:layout_width="396dp"
                 android:layout_height="110dp"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -162,6 +164,19 @@
                 app:layout_constraintHorizontal_bias="0.482"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/hillfortImage"
+                app:layout_constraintVertical_bias="0.318" />
+
+            <Button
+                android:id="@+id/btnShare"
+                android:layout_width="145dp"
+                android:layout_height="37dp"
+                android:layout_marginBottom="16dp"
+                android:text="Share Hillfort"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.482"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mapView"
                 app:layout_constraintVertical_bias="0.318" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

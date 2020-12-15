@@ -118,6 +118,7 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
 
 
 
+
     fun doCancel() {
         view?.finish()
     }

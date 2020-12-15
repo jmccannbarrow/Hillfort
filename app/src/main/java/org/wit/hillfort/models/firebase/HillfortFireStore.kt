@@ -64,6 +64,9 @@ class HillfortFireStore(val context: Context) : HillfortStore, AnkoLogger {
         hillforts.clear()
     }
 
+
+    
+
     fun updateImage(hillfort: HillfortModel) {
         if (hillfort.image != "") {
             val fileName = File(hillfort.image)
